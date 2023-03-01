@@ -1,10 +1,10 @@
   /////////////////////////////// General Part ///////////////////////////////////////////////
         let cameraID
 
-		const video = document.getElementById('video');
-		const startBtn = document.getElementById('start');
+	const video = document.getElementById('video');
+	const startBtn = document.getElementById('start');
         const uploadBtn = document.getElementById('upload');
-		const captureBtn = document.getElementById('capture');
+	const captureBtn = document.getElementById('capture');
         var data = ""
         var isFileUpload = false
         var isCamUpload = false
@@ -51,7 +51,7 @@
             close_pop_up_screen();
         });
 
-        camOption.addEventListener('change',function(){
+        camOption.addEventListener('select',function(){
             cameraID = camOption.value
         })
 
