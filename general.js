@@ -71,8 +71,8 @@
                 
                 const csrf_token = response.token
                 csrftoken=csrf_token
-                console(csrf_token)
-                console(csrftoken)
+                console.log(csrf_token)
+                console.log(csrftoken)
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
