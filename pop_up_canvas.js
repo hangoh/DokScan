@@ -56,7 +56,7 @@ function previewImageOnly(imageData=NaN) {
                
                 canvas.width = image.width;
                 canvas.height = image.height;
-                p_radius = Math.floor(canvas.width*0.01)
+                p_radius = Math.floor(canvas.width*0.02)
                 var middlepoint = [ Math.floor(canvas.width/2),  Math.floor(canvas.height/2)]
                 points = [
                     { x: middlepoint[0]-Math.floor(middlepoint[0]/2), y: middlepoint[1]-Math.floor(middlepoint[1]/2) },
