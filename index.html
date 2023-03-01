@@ -182,18 +182,6 @@
     <script src="file.js"></script>
     <script src="pop_up_canvas.js"></script>
     <script>
-        $.ajax({
-            url: "http://127.0.0.1:8000/api/",
-            type: "GET",
-            credentials: 'include',
-            success: function(response) {
-            // Image data received from backend API
-            console.log(response)
-            // Do your OpenCV processing here...
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-            console.log("AJAX error: " + textStatus + " - " + errorThrown);
-            }
-        })
+        
     </script>
 </html>
