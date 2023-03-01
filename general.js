@@ -1,4 +1,6 @@
- /////////////////////////////// General Part ///////////////////////////////////////////////
+  /////////////////////////////// General Part ///////////////////////////////////////////////
+        let cameraID
+
 		const video = document.getElementById('video');
 		const startBtn = document.getElementById('start');
         const uploadBtn = document.getElementById('upload');
@@ -7,7 +9,7 @@
         var isFileUpload = false
         var isCamUpload = false
 
-
+        var camOption = document.getElementById('cameras')
         var modal = document.getElementById('modal');
         var modalContainer = document.getElementById('modal-container');
         var modalContent = document.getElementById('modal-content');
@@ -48,6 +50,10 @@
             // Close the modal dialog box
             close_pop_up_screen();
         });
+
+        camOption.addEventListener('change',function(){
+            cameraID = camOption.value
+        })
 
         ///modal.addEventListener('click', function(event) {
         // Close the modal dialog box if the user clicks outside the modal content
