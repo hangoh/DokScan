@@ -55,14 +55,14 @@ function sendImageToScan(imageData) {
   
   // Append image data to form data object
   formData.append("image", imageData);
-  var headers = new Headers();
+ 
   console.log(csrftoken)
-  headers.append('X-CSRFToken', csrftoken);
+ 
   // Send AJAX request
   $.ajax({
     url: " http://127.0.0.1:8000/api/scan_for_points",
     type: "POST",
-    headers: headers,
+    headers:{'X-CSRFToken': csrftoken},
     data: formData,
     processData: false,
     contentType: false,
