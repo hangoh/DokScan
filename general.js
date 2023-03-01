@@ -61,16 +61,20 @@
         
 
         function get_csrf(){
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'http://127.0.0.1:8000/api/');
-            xhr.send();
-            xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                    const headersString = xhr.getAllResponseHeaders();
-                    console.log(headersString.toString())
-                    // Do something with the headers string
+            var res = ""
+           $.ajax({
+            url: " http://127.0.0.1:8000/api/",
+            type: "GET",
+            success: function(response) {
+            // Image data received from backend API
+                res = response.token
+                console.log(res)
+                },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 }
-            };
+            })
+            return res
         }
 
         
