@@ -58,5 +58,23 @@
         ///        close_pop_up_screen();
         ///    }
         ///});
+        function get_csrf(){
+            var csrf_t = ""
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/",
+                type: "GET",
+                credentials: 'include',
+                success: function(response) {
+                // Image data received from backend API
+                csrf_t = response.token
+
+                // Do your OpenCV processing here...
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                console.log("AJAX error: " + textStatus + " - " + errorThrown);
+                }
+            })
+            return csrf_t
+        }
 
         
