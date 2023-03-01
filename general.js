@@ -1,6 +1,6 @@
  /////////////////////////////// General Part ///////////////////////////////////////////////
         let cameraID
-
+        const csrftoken = Cookies.get('csrftoken');
 		const video = document.getElementById('video');
 		const startBtn = document.getElementById('start');
         const uploadBtn = document.getElementById('upload');

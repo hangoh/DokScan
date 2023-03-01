@@ -59,6 +59,7 @@ function sendImageToScan(imageData) {
   // Send AJAX request
   $.ajax({
     url: " http://127.0.0.1:8000/api/scan_for_points",
+    headers: {'X-CSRFToken': csrftoken},
     type: "POST",
     data: formData,
     processData: false,
