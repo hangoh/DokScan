@@ -1,4 +1,4 @@
-/////////////////////////////// canvas to preview only //////////////////////////////////////////////
+////////////////////////////// canvas to preview only //////////////////////////////////////////////
 function previewImageOnly(imageData=NaN, points) {
             // Get the canvas element and context
             ctx.clearRect(0, 0, canvas.width, canvas.height);
