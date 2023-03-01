@@ -64,7 +64,6 @@ function sendImageToScan(imageData) {
     data: formData,
     processData: false,
     contentType: false,
-    success: function(resp
     success: function(response) {
       // Image data received from backend API
       if(response.result == "positive"){
