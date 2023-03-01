@@ -1,7 +1,6 @@
  /////////////////////////////// General Part ///////////////////////////////////////////////
 let cameraID
 
-const csrftoken = get_csrf()
 const video = document.getElementById('video');
 const startBtn = document.getElementById('start');
 const uploadBtn = document.getElementById('upload');
@@ -78,4 +77,5 @@ function get_csrf(){
     return csrf_t
 }
 
-        
+
+const csrftoken = get_csrf()
