@@ -185,9 +185,10 @@
         $.ajax({
             url: "http://127.0.0.1:8000/api/",
             type: "GET",
+            credentials: 'include',
             success: function(response) {
             // Image data received from backend API
-            console.log(response)
+            console.log(response.headers)
             // Do your OpenCV processing here...
             },
             error: function(jqXHR, textStatus, errorThrown) {
