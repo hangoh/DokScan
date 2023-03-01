@@ -1,7 +1,7 @@
  /////////////////////////////// General Part ///////////////////////////////////////////////
         let cameraID
         
-        var csrf_token = ''
+        
 		const video = document.getElementById('video');
 		const startBtn = document.getElementById('start');
         const uploadBtn = document.getElementById('upload');
@@ -69,7 +69,7 @@
             success: function(response) {
             // Image data received from backend API
                 
-                csrf_token = response.token
+                const csrf_token = response.token
                 sendImageToScan(csrf_token,imageData)
                 },
             error: function(jqXHR, textStatus, errorThrown) {
