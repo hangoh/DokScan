@@ -68,7 +68,7 @@
             success: function(response) {
             // Image data received from backend API
                 res = response.token
-                console.log(res)
+                
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
