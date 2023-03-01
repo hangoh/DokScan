@@ -1,6 +1,7 @@
  /////////////////////////////// General Part ///////////////////////////////////////////////
         let cameraID
         
+        var csrf_token = ''
 		const video = document.getElementById('video');
 		const startBtn = document.getElementById('start');
         const uploadBtn = document.getElementById('upload');
@@ -61,20 +62,20 @@
         
 
         function get_csrf(){
-            var res = ""
-           $.ajax({
+            
+            $.ajax({
             url: " http://127.0.0.1:8000/api/",
             type: "GET",
             success: function(response) {
             // Image data received from backend API
-                res = response.token
                 
+                csrf_token = response.token
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 }
             })
-            return res
+            
         }
 
         
