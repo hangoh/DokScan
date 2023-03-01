@@ -67,7 +67,7 @@
             xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                     const headersString = xhr.getAllResponseHeaders();
-                    return headersString['x-csrftoken']
+                    return headersString
                     // Do something with the headers string
                 }
             };
