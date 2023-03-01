@@ -15,9 +15,9 @@ async function startCamera() {
     try {
         cameraID = document.getElementById('cameras').value
         var stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: cameraID}});
-        camOption.addEventListener('select',async function(){
-            cameraID = camOption.value
-            stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: cameraID}});
+        camOption.addEventListener('change',async function(){
+            newcameraID = camOption.value
+            stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: newcameraID}});
             video.srcObject = stream;
             video.play();
         })
