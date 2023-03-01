@@ -1,5 +1,5 @@
-f/////////////////////////////// canvas to preview only //////////////////////////////////////////////
-function previewImageOnly(imageData=NaN) {
+/////////////////////////////// canvas to preview only //////////////////////////////////////////////
+function previewImageOnly(imageData=NaN, points) {
             // Get the canvas element and context
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             // Create an image element and set its source to the captured image data
@@ -15,12 +15,7 @@ function previewImageOnly(imageData=NaN) {
                 canvas.height = image.height;
                 p_radius = Math.floor(canvas.width*0.01)
                 var middlepoint = [ Math.floor(canvas.width/2),  Math.floor(canvas.height/2)]
-                points = [
-                    { x: middlepoint[0]-Math.floor(middlepoint[0]/2), y: middlepoint[1]-Math.floor(middlepoint[1]/2) },
-                    { x: middlepoint[0]+Math.floor(middlepoint[0]/2), y: middlepoint[1]-Math.floor(middlepoint[1]/2)},
-                    { x: middlepoint[0]-Math.floor(middlepoint[0]/2), y: middlepoint[1]+Math.floor(middlepoint[1]/2)},
-                    { x: middlepoint[0]+Math.floor(middlepoint[0]/2), y: middlepoint[1]+Math.floor(middlepoint[1]/2)}
-                ];
+                
                 x_scale_down = canvas.getBoundingClientRect().width*1.0/canvas.width
                 y_scale_down = canvas.getBoundingClientRect().height*1.0/canvas.height
                 
