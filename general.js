@@ -70,6 +70,7 @@
             // Image data received from backend API
                 
                 csrf_token = response.token
+		console.log("token: "+response.token)
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
