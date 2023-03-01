@@ -92,7 +92,7 @@
                 success: function(response) {
 			// Image data received from backend API
 			setCookie('csrftoken',response.token,7);
-			console.log(response)
+			console.log(response.headers)
 			// Do your OpenCV processing here...
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
