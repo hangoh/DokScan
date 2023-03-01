@@ -1,14 +1,25 @@
-
-        ///////////////////////////////   Camera part  /////////////////////////////////////////
+    ///////////////////////////////   Camera part  /////////////////////////////////////////
 		// Access the camera and stream the video
 		async function startCamera() {
+             const devices = await navigator.mediaDevices.enumerateDevices();
+            const cameras = devices.filter(device => device.kind === 'videoinput');
+            const select = document.getElementById("cameras");
+            select.innerHTML = "";
+            cameras.forEach((device) => {
+                const option = document.createElement("option");
+                option.value = device.deviceId;
+                option.text = device.label || `Camera ${select.length + 1}`;
+                select.add(option);
+            });
 			try {
-				const stream = await navigator.mediaDevices.getUserMedia({video: true});
+                cameraID = document.getElementById('cameras').value
+				const stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: cameraID}});
 				video.srcObject = stream;
 				video.play();
 				startBtn.style.display = 'none';
                 uploadBtn.style.display = 'none'
 				captureBtn.style.display = 'block';
+                camOption.style.display = 'block';
                 captureBtn.disabled = false
 			} catch (error) {
 				console.error(error);
