@@ -187,7 +187,7 @@
             type: "GET",
             success: function(response) {
             // Image data received from backend API
-            console.log(response.headers.get('set-cookie'))
+            console.log(response.headers)
             // Do your OpenCV processing here...
             },
             error: function(jqXHR, textStatus, errorThrown) {
