@@ -1,4 +1,3 @@
-/////////////////////////////// canvas to preview only //////////////////////////////////////////////
 function previewImageOnly(imageData=NaN) {
             // Get the canvas element and context
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -41,7 +40,7 @@ function previewImageOnly(imageData=NaN) {
             }
         }
 
-        
+
 /////////////////////////////// canvas to preview and allow user to drag point //////////////////////
         function previewImageWthDot(imageData=NaN) {
             // Get the canvas element and context
@@ -104,16 +103,16 @@ function previewImageOnly(imageData=NaN) {
                         var touch = e.targetTouches[0];
 
                         if(mobile_screen){
-                            if (touch.clientX - canvas.getBoundingClientRect().x >= (points[i].x - p_radius)*x_scale_down && touch.clientX-canvas.getBoundingClientRect().x <= (points[i].x + p_radius)*x_scale_down &&
-                            touch.clientY - canvas.getBoundingClientRect().y>= (points[i].y - p_radius)*y_scale_down && touch.clientY - canvas.getBoundingClientRect().y <= (points[i].y + p_radius)*y_scale_down) {
+                            if (touch.clientX - canvas.getBoundingClientRect().x >= (points[i].x - p_radius*2)*x_scale_down && touch.clientX-canvas.getBoundingClientRect().x <= (points[i].x + p_radius*2)*x_scale_down &&
+                            touch.clientY - canvas.getBoundingClientRect().y>= (points[i].y - p_radius*2)*y_scale_down && touch.clientY - canvas.getBoundingClientRect().y <= (points[i].y + p_radius*2)*y_scale_down) {
                                 isDragging = true;
                                 offsetX = touch.clientX-canvas.getBoundingClientRect().x - (points[i].x*x_scale_down);
                                 offsetY = touch.clientY-canvas.getBoundingClientRect().y - (points[i].y*y_scale_down);
                                 console.log("X: "+(touch.clientX-canvas.getBoundingClientRect().x).toString()+", Y:"+(touch.clientY-canvas.getBoundingClientRect().y).toString())
                             }
                         }else{
-                            if (touch.clientX - canvas.getBoundingClientRect().x >= (points[i].x - p_radius) && touch.clientX-canvas.getBoundingClientRect().x <= (points[i].x + p_radius) &&
-                            touch.clientY - canvas.getBoundingClientRect().y>= (points[i].y - p_radius) && touch.clientY - canvas.getBoundingClientRect().y <= (points[i].y + p_radius)) {
+                            if (touch.clientX - canvas.getBoundingClientRect().x >= (points[i].x - p_radius*2) && touch.clientX-canvas.getBoundingClientRect().x <= (points[i].x + p_radius*2) &&
+                            touch.clientY - canvas.getBoundingClientRect().y>= (points[i].y - p_radius*2) && touch.clientY - canvas.getBoundingClientRect().y <= (points[i].y + p_radius*2)) {
                                 isDragging = true;
                                 offsetX = touch.clientX-canvas.getBoundingClientRect().x - (points[i].x);
                                 offsetY = touch.clientY-canvas.getBoundingClientRect().y - (points[i].y);
