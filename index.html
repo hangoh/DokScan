@@ -182,6 +182,16 @@
     <script src="file.js"></script>
     <script src="pop_up_canvas.js"></script>
     <script>
-        
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:8000/api');
+        xhr.send();
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+                const headersString = xhr.getAllResponseHeaders();
+                console.log(headersString);
+                // Do something with the headers string
+            }
+        };
+
     </script>
 </html>

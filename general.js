@@ -68,7 +68,7 @@
             }
             return null;
         }
-        
+
         function eraseCookie(name) {   
             document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         }
@@ -90,16 +90,19 @@
                 type: "GET",
                 credentials: 'include',
                 success: function(response) {
-			// Image data received from backend API
-			setCookie('csrftoken',response.token,7);
-			console.log(response.headers)
-			// Do your OpenCV processing here...
+                    // Image data received from backend API
+                    setCookie('csrftoken',response.token,7);
+                    console.log(response.headers)
+
+                // Do your OpenCV processing here...
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                	console.log("AJAX error: " + textStatus + " - " + errorThrown);
+                console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 }
             })
             return csrf_t
         }
-       
+
         get_csrf()
+       
+        
