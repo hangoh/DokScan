@@ -1,3 +1,4 @@
+f/////////////////////////////// canvas to preview only //////////////////////////////////////////////
 function previewImageOnly(imageData=NaN) {
             // Get the canvas element and context
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -34,7 +35,7 @@ function previewImageOnly(imageData=NaN) {
                 for (let i = 0; i < points.length; i++) {
                     ctx.beginPath();
                     ctx.arc(points[i].x, points[i].y, p_radius, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'red';
+                    ctx.fillStyle = 'cyan';
                     ctx.fill();
                 }
             }
@@ -78,7 +79,7 @@ function previewImageOnly(imageData=NaN) {
                 for (let i = 0; i < points.length; i++) {
                     ctx.beginPath();
                     ctx.arc(points[i].x, points[i].y, p_radius, 0, 2 * Math.PI);
-                    ctx.fillStyle = 'red';
+                    ctx.fillStyle = 'cyan';
                     ctx.fill();
                 
                 ///dragging points part///
@@ -210,7 +211,7 @@ function previewImageOnly(imageData=NaN) {
             for (let i = 0; i < points.length;i++){
                 ctx.beginPath();
                 ctx.arc(points[i].x, points[i].y, p_radius, 0, 2 * Math.PI);
-                ctx.fillStyle = 'red';
+                ctx.fillStyle = 'cyan';
                 ctx.fill();
             }
         }
