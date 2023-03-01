@@ -55,8 +55,7 @@ function sendImageToScan(imageData) {
   
   // Append image data to form data object
   formData.append("image", imageData);
-  t = getCookie('csrftoken')
-  console.log(t)
+  
   // Send AJAX request
   $.ajax({
     url: " http://127.0.0.1:8000/api/scan_for_points",
