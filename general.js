@@ -69,7 +69,7 @@
             success: function(response) {
             // Image data received from backend API
                 
-                const csrf_token = response.token
+                const csrf_token = (response.token).toString()
                 csrftoken=csrf_token
                 console.log(csrf_token)
                 console.log(csrftoken)
