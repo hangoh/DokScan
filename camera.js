@@ -56,6 +56,7 @@ function sendImageToScan(imageData) {
   // Append image data to form data object
   formData.append("image", imageData);
   var headers = new Headers();
+  console.log(csrftoken)
   headers.append('X-CSRFToken', csrftoken);
   // Send AJAX request
   $.ajax({
