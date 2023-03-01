@@ -67,7 +67,7 @@ function get_csrf(){
 	success: function(response) {
 	// Image data received from backend API
 	csrf_t = response.token
-
+	console.log(response.token)
 	// Do your OpenCV processing here...
 	},
 	error: function(jqXHR, textStatus, errorThrown) {
