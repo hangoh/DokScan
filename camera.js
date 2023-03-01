@@ -1,4 +1,4 @@
-   
+
 ///////////////////////////////   Camera part  /////////////////////////////////////////
 // Access the camera and stream the video
 async function startCamera() {
@@ -45,7 +45,39 @@ function captureImage() {
     isFileUpload = false
     console.log(data);
         // You can do something with the data here, like send it to a server or display it on the page
-    show_pop_up_screen(data)
+    sendImageToScan(data)
+}
+
+// Function to send AJAX request
+function sendImageToScan(imageData) {
+  // Create form data object
+  var formData = new FormData();
+  
+  // Append image data to form data object
+  formData.append("image", imageData);
+  
+  // Send AJAX request
+  $.ajax({
+    url: " http://127.0.0.1:8000/api/scan_for_points",
+    type: "POST",
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(response) {
+      // Image data received from backend API
+      if(response.result == "positive"){
+        var imageDataFromBackend = response.points;
+        console.log(imageDataFromBackend)
+        // Convert image data to OpenCV format
+        //var image = cv.matFromImageData(new ImageData(new Uint8ClampedArray(imageDataFromBackend), canvas.width, canvas.height));
+        show_pop_up_screen(previewImageOnly(imageData,response.points))
+      }
+      
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log("AJAX error: " + textStatus + " - " + errorThrown);
+    }
+  });
 }
 
 
