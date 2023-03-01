@@ -90,13 +90,13 @@
                 type: "GET",
                 credentials: 'include',
                 success: function(response) {
-                // Image data received from backend API
-                setCookie('csrftoken',response.token.toString(),7);
-
-                // Do your OpenCV processing here...
+			// Image data received from backend API
+			setCookie('csrftoken',response.token.toString(),7);
+			console.log(response.token.toString())
+			// Do your OpenCV processing here...
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                console.log("AJAX error: " + textStatus + " - " + errorThrown);
+                	console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 }
             })
             return csrf_t
