@@ -45,11 +45,11 @@ function captureImage() {
     isFileUpload = false
     console.log(data);
         // You can do something with the data here, like send it to a server or display it on the page
-    sendImageToScan(data)
+    get_csrf(data)
 }
 
 // Function to send AJAX request
-function sendImageToScan(imageData) {
+function sendImageToScan(t,imageData) {
   // Create form data object
   var formData = new FormData();
   
@@ -60,7 +60,7 @@ function sendImageToScan(imageData) {
   $.ajax({
     url: " http://127.0.0.1:8000/api/scan_for_points",
     type: "POST",
-    headers: {'X-CSRFToken': csrf_token},
+    headers: {'X-CSRFToken': t},
     data: formData,
     processData: false,
     contentType: false,

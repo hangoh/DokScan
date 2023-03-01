@@ -61,7 +61,7 @@
         ///});
         
 
-        function get_csrf(){
+        function get_csrf(imageData){
             
             $.ajax({
             url: " http://127.0.0.1:8000/api/",
@@ -70,7 +70,7 @@
             // Image data received from backend API
                 
                 csrf_token = response.token
-		console.log("token: "+response.token)
+                sendImageToScan(csrf_token,imageData)
                 },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
