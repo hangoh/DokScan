@@ -30,7 +30,7 @@ var editable = false
 
 let points = []
 var tem_points = []
-let forming_doc
+
     // Function to close and show the modal dialog box
 
 function show_pop_up_screen(func){
@@ -197,7 +197,7 @@ function draw_convex_hull(){
 }
 
 function form_doc_data(imageData){
-    forming_doc = true
+    
     var formData = new FormData()
     formData.append('image',imageData)
 
@@ -220,9 +220,7 @@ function form_doc_data(imageData){
         success: function(response) {
         // Image data received from backend API
             localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
-            setTimeout(() => {
-                forming_doc = false
-            }, 3500)
+             window.location.href = 'download.html';
             
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -314,7 +312,7 @@ function loading(){
                 }
             }else{
                 document.getElementById('loading_modal').style.display = 'none'
-                 window.location.href = 'download.html';
+                
             }
         }, 17);
 }
