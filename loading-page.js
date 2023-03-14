@@ -35,19 +35,15 @@ async function form_doc_data(){
             success: function(response) {
             // Image data received from backend API
                 localStorage.setItem('image_byte',JSON.stringify(`data:image/jpeg;base64,${response}`))
-                setTimeout(()=>{
-                    done = true
-                    window.location.href="download.html"
-                },1000)
+                done = true
+                window.location.href="download.html"
                 
                 
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);         
-                setTimeout(()=>{
-                    done = true
-                    window.location.href = 'index.html';
-                },1000)          
+                done = true
+                window.location.href = 'index.html';         
             }
         });
     }catch{
