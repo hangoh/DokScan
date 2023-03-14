@@ -7,7 +7,7 @@ async function form_doc_data(){
         const csrftoken = JSON.parse(localStorage.getItem('csrf-token'))
         if(imageData == null||points == null){
             console.log('redirecting...')
-            window.location.href = 'index.html';
+            //window.location.href = 'index.html';
         }else{
             localStorage.removeItem('imagedata')
             localStorage.removeItem('points')
@@ -41,12 +41,14 @@ async function form_doc_data(){
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 done = true
-                window.location.href = 'index.html';
+                return false
             }
         });
     }catch{
+        done = true
         console.log('redirecting...')
-        window.location.href = 'index.html';
+        //window.location.href = 'index.html';
+        return false
     }
 }
 
@@ -132,8 +134,10 @@ async function loading(){
 
 async function window_load(){
     var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
-    if(r2){
+    if(r1&&r2){
         window.location.href = 'download.html';
+    }else{
+        //window.location.href = 'index.html';
     }
 }
 
