@@ -64,10 +64,10 @@ confirmBtn.addEventListener('click', function() {
     // and then close the modal dialog box
     console.log(points)
     console.log(tem_points)
-    localStorage.setItem('imagedata',`${data}`)
-    localStorage.setItem('points',`${points}`)
+    localStorage.setItem('imagedata',JSON.stringify(data))
+    localStorage.setItem('points',JSON.stringify(points))
     close_pop_up_screen();
-    //window.location.href = "loading.html"    
+    window.location.href = "loading.html"    
     
 });
 
@@ -101,7 +101,7 @@ function get_csrf(){
     // Image data received from backend API
         
         const csrf_token = (response.token).toString()
-        localStorage.setItem('csrf-token',csrf_token)
+        localStorage.setItem('csrf-token',JSON.stringify(csrf_token))
         },
     error: function(jqXHR, textStatus, errorThrown) {
         console.log("AJAX error: " + textStatus + " - " + errorThrown);

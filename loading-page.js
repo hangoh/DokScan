@@ -2,9 +2,9 @@ var done = false
 
 async function form_doc_data(){
     try{
-        const imageData = localStorage.getItem('imagedata')
-        const points = localStorage.getItem('points')
-        const csrftoken = localStorage.getItem('csrf-token')
+        const imageData = JSON.parse(localStorage.getItem('imagedata'))
+        const points = JSON.parse(localStorage.getItem('points'))
+        const csrftoken = JSON.parse(localStorage.getItem('csrf-token'))
         if(imageData == null||points == null){
             console.log('redirecting...')
             window.location.href = 'index.html';
