@@ -31,7 +31,6 @@ async function form_doc_data(){
             // Image data received from backend API
                 localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
                 done = true
-                return true
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
@@ -123,7 +122,7 @@ async function loading(){
 }
 
 async function window_load(){
-    var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
+    var [r1,r2] = await Promise.all([form_doc_data(),loading()])
     if(r2){
         window.location.href = 'download.html';
     }
