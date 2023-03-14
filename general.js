@@ -30,7 +30,7 @@ var editable = false
 
 let points = []
 var tem_points = []
-var forming_doc = true
+let forming_doc
     // Function to close and show the modal dialog box
 
 function show_pop_up_screen(func){
@@ -117,7 +117,7 @@ function sendImageToScan(imageData) {
   
   // Append image data to form data object
   formData.append("image", imageData);
- 
+    forming_doc = true
   
   // Send AJAX request
   $.ajax({
@@ -311,10 +311,11 @@ async function loading(){
                 A += 0.00002;
                 B += 0.00001;
                 }
+            }else{
+                return true
             }
         }, 17);
-    
-    return true
+        return interval
 }
 
 async function form_doc_data_and_loading(imageData){
