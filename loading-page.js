@@ -35,18 +35,18 @@ async function form_doc_data(){
             success: function(response) {
             // Image data received from backend API
                 localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
-                setTimeout(()=>{
-                    done = true
-                    return true
-                },1500)
+                
+                done = true
+                return true
+                
                 
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
-                setTimeout(()=>{
-                    done = true
-                    return false
-                },1500)
+                
+                done = true
+                return false
+               
             }
         });
     }catch{
