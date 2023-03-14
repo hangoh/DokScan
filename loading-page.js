@@ -1,9 +1,9 @@
 var done = false
 
 async function form_doc_data(){
-    try{
-        imageData = localStorage.getItem('imagedata')
-        points = localStorage.getItem('points')
+    
+        var imageData = localStorage.getItem('imagedata')
+        var points = localStorage.getItem('points')
         if(imageData == null||points == null){
             console.log('redirecting...')
             window.location.href = 'index.html';
@@ -42,10 +42,7 @@ async function form_doc_data(){
                 window.location.href = 'index.html';
             }
         });
-    }catch{
-        console.log('redirecting...')
-        window.location.href = 'index.html';
-    }
+    
 }
 
 async function loading(){
@@ -129,7 +126,7 @@ async function loading(){
 }
 
 async function window_load(){
-    var [r1,r2] = await Promise.all([form_doc_data(),loading()])
+    var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
     if(r2){
         window.location.href = 'download.html';
     }
