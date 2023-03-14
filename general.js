@@ -221,7 +221,7 @@ function form_doc_data(imageData){
             localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
             setTimeout(() => {
                 forming_doc = false
-            }, 1500)
+            }, 3500)
             
             return true
         },
