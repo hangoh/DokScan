@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>DokScan</title>
+    <link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+            font-size: 25px;
+            height: 100vh;
+		}
+        a{
+            text-decoration: none;
+            color:black;
+        }
+        h1{
+            margin:auto;
+            text-align: center;
+            font-family: 'Leckerli One'
+          
+        }
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+            height: 80vh;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+		#video {
+			width: 100%;
+			height:80%;
+			margin-bottom: 20px;
+		}
+		button {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 25px;
+			cursor: pointer;
+            margin-top: 0.5%;
+		}
+		#capture {
+			display: none;
+		}
+        /* Style the modal dialog box */
+        #modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        
+        }
+
+        /* Style the modal dialog box content */
+        #modal-container{
+        background-color: #fefefe;
+        margin:5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        max-width: 80%;
+        position: relative;
+        }
+
+        #modal-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Style the confirm and cancel buttons */
+        #modal-buttons{
+            display: flex;
+            justify-content:space-between ;
+            margin:5px;
+        }
+
+        #modal-buttons button {
+        padding: 10px;
+        margin-left: 10px;
+        margin-bottom: 10px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        }
+
+        #confirm-btn {
+        background-color: cyan;
+        
+        }
+
+        #cancel-btn {
+        background-color: red;
+        
+        }
+
+        /* Style the modal dialog box close button */
+        .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        
+        #modal-image{
+            max-width:100%;
+            max-height: 90vh;
+        }
+
+        #cameras{
+            display: none;
+        }
+
+        #edit-btn{
+            display: none;
+        }
+
+        #edit-confirm-btn{
+            display: none;
+            background-color: cyan;
+        }
+        
+        #edit-cancel-btn{
+            display: none;
+            background-color: red;
+        }
+        #canvas-alert{
+            display:none; 
+            width:95%; 
+            font-size:16px; 
+            text-align:center; 
+            padding:10px;
+            color: firebrick;
+        }
+
+		/* Responsive styles */
+		@media screen and (max-width: 768px) {
+			.container {
+				padding: 10px;
+			}
+			#video {
+				max-width: 100%;
+			}
+		}
+		@media screen and (max-width: 480px) {
+			.container {
+				padding: 5px;
+			}
+			button {
+				font-size: 25px;
+			}
+            #video {
+                width: 100%;
+                max-height:90%;
+                margin-bottom: 20px;
+            }
+		}
+	</style>
+</head>
+<body>
+    <h1><a href="index.html">DokScan</a></h1>
+	<div class="container" id="main-container">
+		<button id="start">Start Camera</button>
+
+        <button id="upload">Upload File</button>
+        <input type="file" id="file-input" accept="image/*" style = 'display: none;'>
+        <select id="cameras" name="cameras">
+        </select>
+		<video id="video"></video>
+      
+		<button id="capture" disabled>Capture Image</button>
+    </div> 
+        <!-- Add the modal dialog box -->
+        <div id="modal">
+            <div id="modal-container">
+                <div id="modal-buttons">
+                    <button id="cancel-btn">Cancel</button>
+                    <button id="edit-cancel-btn">Cancel</button>
+                    <button id="edit-btn" >Edit</button>
+                    <button id="edit-confirm-btn">Save</button>
+                    <button id="confirm-btn">Confirm</button>
+                </div>
+                <div id="modal-content">
+                    <div id="canvas-alert">Due to various factors, less than or more than 4 edges were detected, manual input is required</div>
+                    <canvas id="modal-image"></canvas>
+                </div>
+            </div>
+        </div>
+
+	
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+	<script src="general.js"></script>
+    <script src="camera.js"></script>
+    <script src="file.js"></script>
+    <script src="pop_up_canvas.js"></script>
+    <script>
+        get_csrf()
+
+    </script>
+</html>

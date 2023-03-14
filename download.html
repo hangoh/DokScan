@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+	<title>DokScan</title>
+	<link href='https://fonts.googleapis.com/css?family=Leckerli One' rel='stylesheet'>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+            font-size: 25px;
+            height: 100vh;
+		}
+        h1{
+            margin:auto;
+            text-align: center;
+			font-family: 'Leckerli One'
+            
+        }
+		a{
+            text-decoration: none;
+			color: black;
+        }
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+            height: 90vh;
+			padding: 20px;
+			box-sizing: border-box;
+	
+		}
+
+		button {
+			padding: 10px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			font-size: 25px;
+			cursor: pointer;
+            margin: 1%;
+		}
+
+        #button-container{
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between ;
+            margin:5px;
+        }
+       
+
+		/* Responsive styles */
+		@media screen and (max-width: 768px) {
+			.container {
+				padding: 10px;
+			}
+			#download_canvas {
+				max-width: 100%;
+			}
+		}
+		@media screen and (max-width: 480px) {
+			.container {
+				padding: 5px;
+			}
+			button {
+				font-size: 25px;
+			}
+            
+		}
+        #download_canvas{
+            max-height:80%;
+            max-width:95%;
+        }
+	</style>
+	
+</head>
+<body>
+    <h1><a href="index.html">DokScan</a></h1>
+	<div class="container" id="main-container">
+        <canvas id="download_canvas"></canvas>  
+		<div id="button-container">
+            <button id="img_d">Export as Image (.jpeg)</button>
+            <button id="pdf_d">Export as Pdf (.pdf)</button>
+        </div>
+    </div> 
+</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="download.js"></script>
+</html>
