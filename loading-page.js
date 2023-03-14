@@ -35,6 +35,8 @@ async function form_doc_data(){
             success: function(response) {
             // Image data received from backend API
                 localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
+                console.log('jbhbbbbbibuui')
+                console.log('jbhbbbb????????????bibuui')
                 done = true
                 return true
                 
@@ -139,7 +141,7 @@ async function loading(){
 async function window_load(){
     var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
     if(r1&&r2){
-        window.location.href = 'download.html';
+        //window.location.href = 'download.html';
     }else{
         //window.location.href = 'index.html';
     }
