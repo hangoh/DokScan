@@ -238,7 +238,7 @@ function form_doc_data(imageData){
 
 function loading(){
     const icanvas = document.getElementById('loading')
-    document.getElementById('loading_modal').style = 'block'
+    document.getElementById('loading_modal').style.display = 'block'
     
         const canvasWidth = 80;
         const canvasHeight = 24;
