@@ -237,9 +237,9 @@ function form_doc_data(imageData){
 }
 
 function loading(){
-    const canvas = document.getElementById('loading')
+    const icanvas = document.getElementById('loading')
     document.getElementById('loading_modal').style = 'block'
-    while(forming_doc){
+    
         const canvasWidth = 80;
         const canvasHeight = 24;
         const canvasArea = canvasHeight * canvasWidth;
@@ -260,7 +260,7 @@ function loading(){
 
         // buffers
         let b, z;
-
+        while(forming_doc){
         let interval = setInterval(() => {
             b = Array(canvasArea).fill(' '); //
             z = Array(7040).fill(0); // z-buffer set to z^-1
@@ -299,14 +299,14 @@ function loading(){
             }
             }
 
-            canvas.innerHTML = '';
+            icanvas.innerHTML = '';
             let line = [];
 
             for (let k = 0; k < canvasArea + 1; k++) {
             if (k % canvasWidth) {
                 line.push(b[k]);
             } else {
-                canvas.innerHTML += line.join('') + '<br />';
+                icanvas.innerHTML += line.join('') + '<br />';
                 line = [];
             }
 
