@@ -231,7 +231,7 @@ function form_doc_data(imageData){
             
         }
     });
-    loading()
+    
 }
 
 function loading(){
