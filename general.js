@@ -64,9 +64,10 @@ confirmBtn.addEventListener('click', function() {
     // and then close the modal dialog box
     console.log(points)
     console.log(tem_points)
-    form_doc_data(data)
+    localStorage.setItem('imagedata',`${data}`)
+    localStorage.setItem('points',`${points}`)
     close_pop_up_screen();
-    
+    window.location.href = "loading.html"    
     
 });
 
@@ -197,36 +198,4 @@ function draw_convex_hull(){
     ctx.stroke();
 }
 
-function form_doc_data(imageData){
-    
-    var formData = new FormData()
-    formData.append('image',imageData)
 
-    var numpy_p_list = []
-    for (let i = 0;i<points.length; i++){
-        var p_list = [[]]
-        p_list[0].push(points[i].x)
-        p_list[0].push(points[i].y)
-        numpy_p_list.push(p_list)
-    }
-    formData.append('points',JSON.stringify(numpy_p_list))
-    console.log(numpy_p_list)
-    $.ajax({
-        url: " https://dokscan.up.railway.app/api/return_scaned_doc",
-        type: "POST",
-        headers: {'X-CSRFToken': csrftoken},
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function(response) {
-        // Image data received from backend API
-            localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
-             window.location.href = 'download.html';
-            
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            console.log("AJAX error: " + textStatus + " - " + errorThrown);
-            
-        }
-    });
-}
