@@ -67,7 +67,7 @@ confirmBtn.addEventListener('click', function() {
     console.log(tem_points)
     close_pop_up_screen();
     form_doc_data(data)
-    
+    loading()
 });
 
 cancelBtn.addEventListener('click', function() {
@@ -210,6 +210,7 @@ function form_doc_data(imageData){
     }
     formData.append('points',JSON.stringify(numpy_p_list))
     console.log(numpy_p_list)
+    
     $.ajax({
         url: " https://dokscan.up.railway.app/api/return_scaned_doc",
         type: "POST",
@@ -232,7 +233,7 @@ function form_doc_data(imageData){
             form_success = false
         }
     });
-    loading()
+    
 }
 
 function loading(){
