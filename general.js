@@ -112,49 +112,49 @@ function get_csrf(){
 
 // Function to send AJAX request
 function sendImageToScan(imageData) {
-  // Create form data object
-  var formData = new FormData();
-  
-  // Append image data to form data object
-  formData.append("image", imageData);
-    forming_doc = true
-  
-  // Send AJAX request
-  $.ajax({
-    url: " https://dokscan.up.railway.app/api/scan_for_points",
-    type: "POST",
-    headers: {'X-CSRFToken': csrftoken},
-    data: formData,
-    processData: false,
-    contentType: false,
-    success: function(response) {
-      // Image data received from backend API
-      if(response.result == "positive"){
-        var imageDataFromBackend = response.points;
-        console.log(imageDataFromBackend)
-       
-        for(let i=0 ;i<imageDataFromBackend.length;i++){
-            p ={x:0,y:0}
-            p.x = imageDataFromBackend[i][0][0]
-            p.y = imageDataFromBackend[i][0][1]
-            points.push(p)
-        }
-        show_pop_up_screen(previewImageOnly(imageData))
-      }else{
-        // Hide the alert message after 4 seconds
+    // Create form data object
+    var formData = new FormData();
+    
+    // Append image data to form data object
+    formData.append("image", imageData);
+    
+    
+    // Send AJAX request
+    $.ajax({
+        url: " https://dokscan.up.railway.app/api/scan_for_points",
+        type: "POST",
+        headers: {'X-CSRFToken': csrftoken},
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+        // Image data received from backend API
+        if(response.result == "positive"){
+            var imageDataFromBackend = response.points;
+            console.log(imageDataFromBackend)
         
-        show_pop_up_screen(previewImageWthDot(imageData))
-        alertMsg.style.display = "block";
-        setTimeout(function() {
-        alertMsg.style.display = "none";
-        }, 5500);
-      }
-      
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-      console.log("AJAX error: " + textStatus + " - " + errorThrown);
-    }
-  });
+            for(let i=0 ;i<imageDataFromBackend.length;i++){
+                p ={x:0,y:0}
+                p.x = imageDataFromBackend[i][0][0]
+                p.y = imageDataFromBackend[i][0][1]
+                points.push(p)
+            }
+            show_pop_up_screen(previewImageOnly(imageData))
+        }else{
+            // Hide the alert message after 4 seconds
+            
+            show_pop_up_screen(previewImageWthDot(imageData))
+            alertMsg.style.display = "block";
+            setTimeout(function() {
+            alertMsg.style.display = "none";
+            }, 5500);
+        }
+        
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            console.log("AJAX error: " + textStatus + " - " + errorThrown);
+        }
+    });
 }
 
 
@@ -197,6 +197,7 @@ function draw_convex_hull(){
 }
 
 function form_doc_data(imageData){
+    forming_doc = true
     var formData = new FormData()
     formData.append('image',imageData)
 
@@ -222,7 +223,6 @@ function form_doc_data(imageData){
             setTimeout(() => {
                 forming_doc = false
             }, 3500)
-            
             
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -258,8 +258,8 @@ function loading(){
 
         // buffers
         let b, z;
-        
-        let interval = setInterval(() => {
+        var interval = false
+        interval = setInterval(() => {
             if(forming_doc){
                 b = Array(canvasArea).fill(' '); //
                 z = Array(7040).fill(0); // z-buffer set to z^-1
