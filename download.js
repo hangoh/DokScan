@@ -7,7 +7,7 @@ var pdf_download = document.getElementById('pdf_d')
 
 function get_img_data(){
     try{
-        byteData = localStorage.getItem('image_byte')
+        byteData = JSON.parse(localStorage.getItem('image_byte'))
         if(byteData == null){
             console.log('redirecting...')
             window.location.href = 'index.html';
