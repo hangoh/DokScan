@@ -65,7 +65,7 @@ confirmBtn.addEventListener('click', function() {
     console.log(points)
     console.log(tem_points)
     close_pop_up_screen();
-    form_doc_data_and_loading(data)
+    form_doc_data(data)
     
 });
 
@@ -231,9 +231,10 @@ function form_doc_data(imageData){
             return false
         }
     });
+    loading()
 }
 
-async function loading(){
+function loading(){
     const canvas = document.getElementById('loading')
     document.getElementById('loading_modal').style.display = 'block'
     
@@ -315,14 +316,9 @@ async function loading(){
                 return true
             }
         }, 17);
-        return interval
-}
-
-async function form_doc_data_and_loading(imageData){
-    const [result1, result2] = await Promise.all([form_doc_data(imageData), loading()])
-    if(result1 &&result2){
-        window.location.href = 'download.html';
-    }else{
-        document.getElementById('loading_modal').style.display = 'none'
-    }
+        if (interval){
+            window.location.href = 'download.html';
+        }else{
+            document.getElementById('loading_modal').style.display = 'none'
+        }
 }
