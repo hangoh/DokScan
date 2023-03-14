@@ -1,13 +1,18 @@
 var done = false
 
 async function form_doc_data(){
-    
-        var imageData = localStorage.getItem('imagedata')
-        var points = localStorage.getItem('points')
-        
-        localStorage.removeItem('imagedata')
-        localStorage.removeItem('points')
-        
+    try{
+        const imageData = localStorage.getItem('imagedata')
+        const points = localStorage.getItem('points')
+        const csrftoken = localStorage.getItem('csrf-token')
+        if(imageData == null||points == null){
+            console.log('redirecting...')
+            window.location.href = 'index.html';
+        }else{
+            localStorage.removeItem('imagedata')
+            localStorage.removeItem('points')
+            localStorage.removeItem('csrf-token')
+        }
         var formData = new FormData()
         formData.append('image',imageData)
 
@@ -31,14 +36,18 @@ async function form_doc_data(){
             // Image data received from backend API
                 localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
                 done = true
+                return true
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 done = true
-                //window.location.href = 'index.html';
+                window.location.href = 'index.html';
             }
         });
-       
+    }catch{
+        console.log('redirecting...')
+        window.location.href = 'index.html';
+    }
 }
 
 async function loading(){
@@ -122,7 +131,7 @@ async function loading(){
 }
 
 async function window_load(){
-    var [r1,r2] = await Promise.all([form_doc_data(),loading()])
+    var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
     if(r2){
         window.location.href = 'download.html';
     }

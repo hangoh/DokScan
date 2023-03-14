@@ -101,8 +101,7 @@ function get_csrf(){
     // Image data received from backend API
         
         const csrf_token = (response.token).toString()
-        csrftoken=csrf_token
-    
+        localStorage.setItem('csrf-token',csrf_token)
         },
     error: function(jqXHR, textStatus, errorThrown) {
         console.log("AJAX error: " + textStatus + " - " + errorThrown);
