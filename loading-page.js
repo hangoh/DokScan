@@ -140,10 +140,10 @@ async function loading(){
 
 async function window_load(){
     var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
-    if(r1&&r2){
+    if(r1 == true && r2== true){
         window.location.href = 'download.html';
     }else{
-        //window.location.href = 'index.html';
+        window.location.href = 'index.html';
     }
 }
 
