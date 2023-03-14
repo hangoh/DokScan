@@ -313,12 +313,8 @@ function loading(){
                 B += 0.00001;
                 }
             }else{
-                return true
+                document.getElementById('loading_modal').style.display = 'none'
+                 window.location.href = 'download.html';
             }
         }, 17);
-        if (interval){
-            window.location.href = 'download.html';
-        }else{
-            document.getElementById('loading_modal').style.display = 'none'
-        }
 }
