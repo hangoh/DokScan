@@ -223,12 +223,12 @@ function form_doc_data(imageData){
                 forming_doc = false
             }, 3500)
             
-            return true
+            
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("AJAX error: " + textStatus + " - " + errorThrown);
             forming_doc = false
-            return false
+            
         }
     });
     loading()
