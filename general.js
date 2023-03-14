@@ -31,7 +31,6 @@ var editable = false
 let points = []
 var tem_points = []
 var forming_doc = true
-var form_success = false
     // Function to close and show the modal dialog box
 
 function show_pop_up_screen(func){
@@ -66,8 +65,8 @@ confirmBtn.addEventListener('click', function() {
     console.log(points)
     console.log(tem_points)
     close_pop_up_screen();
-    form_doc_data(data)
-    loading()
+    form_doc_data_and_loading(data)
+    
 });
 
 cancelBtn.addEventListener('click', function() {
@@ -210,7 +209,6 @@ function form_doc_data(imageData){
     }
     formData.append('points',JSON.stringify(numpy_p_list))
     console.log(numpy_p_list)
-    
     $.ajax({
         url: " https://dokscan.up.railway.app/api/return_scaned_doc",
         type: "POST",
@@ -218,26 +216,25 @@ function form_doc_data(imageData){
         data: formData,
         processData: false,
         contentType: false,
-        async: true,
         success: function(response) {
         // Image data received from backend API
             localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
             setTimeout(() => {
                 forming_doc = false
-                form_success = true
             }, 1500)
+            
+            return true
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("AJAX error: " + textStatus + " - " + errorThrown);
             forming_doc = false
-            form_success = false
+            return false
         }
     });
-    
 }
 
-function loading(){
-    const icanvas = document.getElementById('loading')
+async function loading(){
+    const canvas = document.getElementById('loading')
     document.getElementById('loading_modal').style.display = 'block'
     
         const canvasWidth = 80;
@@ -299,14 +296,14 @@ function loading(){
             }
             }
 
-            icanvas.innerHTML = '';
+            canvas.innerHTML = '';
             let line = [];
 
             for (let k = 0; k < canvasArea + 1; k++) {
             if (k % canvasWidth) {
                 line.push(b[k]);
             } else {
-                icanvas.innerHTML += line.join('') + '<br />';
+                canvas.innerHTML += line.join('') + '<br />';
                 line = [];
             }
 
@@ -315,11 +312,15 @@ function loading(){
             }
         }, 17);
     }
-    if(form_success){
-        window.location.href = 'download.html';
-    }else{
-        document.getElementById('loading_modal').style = 'none'
-    }
+    return true
 }
 
+async function form_doc_data_and_loading(imageData){
+    const [result1, result2] = await Promise.all([form_doc_data(imageData), loading()])
+    if(result1 &&result2){
+        window.location.href = 'download.html';
+    }else{
+        document.getElementById('loading_modal').style.display = 'none'
+    }
+}
 
