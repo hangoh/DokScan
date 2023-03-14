@@ -31,6 +31,7 @@ var editable = false
 let points = []
 var tem_points = []
 var forming_doc = true
+var form_success = false
     // Function to close and show the modal dialog box
 
 function show_pop_up_screen(func){
@@ -65,7 +66,7 @@ confirmBtn.addEventListener('click', function() {
     console.log(points)
     console.log(tem_points)
     close_pop_up_screen();
-    form_doc_data_and_loading(data)
+    form_doc_data(data)
     
 });
 
@@ -196,7 +197,7 @@ function draw_convex_hull(){
     ctx.stroke();
 }
 
-async function form_doc_data(imageData){
+function form_doc_data(imageData){
     var formData = new FormData()
     formData.append('image',imageData)
 
@@ -216,24 +217,25 @@ async function form_doc_data(imageData){
         data: formData,
         processData: false,
         contentType: false,
+        async: true,
         success: function(response) {
         // Image data received from backend API
             localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
             setTimeout(() => {
                 forming_doc = false
+                form_success = true
             }, 1500)
-            
-            return true
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log("AJAX error: " + textStatus + " - " + errorThrown);
             forming_doc = false
-            return false
+            form_success = false
         }
     });
+    loading()
 }
 
-async function loading(){
+function loading(){
     const canvas = document.getElementById('loading')
     document.getElementById('loading_modal').style = 'block'
     while(forming_doc){
@@ -312,15 +314,11 @@ async function loading(){
             }
         }, 17);
     }
-    return true
-}
-
-async function form_doc_data_and_loading(imageData){
-    const [result1, result2] = await Promise.all([form_doc_data(imageData), loading()])
-    if(result1 &&result2){
+    if(form_success){
         window.location.href = 'download.html';
     }else{
         document.getElementById('loading_modal').style = 'none'
     }
 }
+
 
