@@ -7,7 +7,7 @@ async function form_doc_data(){
         const csrftoken = JSON.parse(localStorage.getItem('csrf-token'))
         if(imageData == null||points == null){
             console.log('redirecting...')
-            //window.location.href = 'index.html';
+            window.location.href = 'index.html';
         }else{
             localStorage.removeItem('imagedata')
             localStorage.removeItem('points')
@@ -53,7 +53,7 @@ async function form_doc_data(){
     }catch{
         done = true
         console.log('redirecting...')
-        //window.location.href = 'index.html';
+        window.location.href = 'index.html';
         return false
     }
 }
@@ -138,8 +138,8 @@ async function loading(){
     }, 17);
 }
 
-async function window_load(){
-    var [r1,r2] = await Promise.allSettled([form_doc_data(),loading()])
+function window_load(){
+    var [r1,r2] = Promise.allSettled([form_doc_data(),loading()])
     if(r1 == true && r2== true){
         window.location.href = 'download.html';
     }else{
