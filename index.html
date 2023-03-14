@@ -26,6 +26,10 @@
             font-family: 'Leckerli One'
           
         }
+        h2{
+            margin:auto;
+            text-align: center;
+        }
 		.container {
 			display: flex;
 			flex-direction: column;
@@ -64,6 +68,18 @@
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.8);
+        
+        }
+        #loading_modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: white;
         
         }
 
@@ -159,6 +175,16 @@
             padding:10px;
             color: firebrick;
         }
+        pre{
+    		display: flex;
+    		margin: auto;
+    		align-content: center;
+    		justify-content: center;
+    		max-height: 95vh;
+    		max-width:95vh;
+            color: black; 
+            white-space: pre;
+    	}
 
 		/* Responsive styles */
 		@media screen and (max-width: 768px) {
@@ -214,6 +240,10 @@
             </div>
         </div>
 
+        <div id="loading_modal">
+            <h2>loading...</h2>
+            <pre id="loading" ></pre>
+        </div>
 	
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
