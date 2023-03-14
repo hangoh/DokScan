@@ -35,26 +35,24 @@ async function form_doc_data(){
             success: function(response) {
             // Image data received from backend API
                 localStorage.setItem('image_byte',JSON.stringify(`data:image/jpeg;base64,${response}`))
-                console.log('jbhbbbbbibuui')
-                console.log('jbhbbbb????????????bibuui')
-                done = true
-                return true
-                
+                setTimeout(()=>{
+                    done = true
+                },1500)
+                window.location.href="download.html"
                 
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log("AJAX error: " + textStatus + " - " + errorThrown);
-                
-                done = true
-                return false
-               
+                console.log("AJAX error: " + textStatus + " - " + errorThrown);         
+                setTimeout(()=>{
+                    done = true
+                },1500)          
             }
         });
     }catch{
         done = true
         console.log('redirecting...')
         window.location.href = 'index.html';
-        return false
+        
     }
 }
 
@@ -138,13 +136,9 @@ async function loading(){
     }, 17);
 }
 
-function window_load(){
-    var [r1,r2] = Promise.allSettled([form_doc_data(),loading()])
-    if(r1 == true && r2== true){
-        window.location.href = 'download.html';
-    }else{
-        window.location.href = 'index.html';
-    }
+async function window_load(){
+    await Promise.allSettled([form_doc_data(),loading()])
+    
 }
 
 window_load()
