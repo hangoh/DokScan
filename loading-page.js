@@ -4,13 +4,10 @@ async function form_doc_data(){
     
         var imageData = localStorage.getItem('imagedata')
         var points = localStorage.getItem('points')
-        if(imageData == null||points == null){
-            console.log('redirecting...')
-            window.location.href = 'index.html';
-        }else{
-            localStorage.removeItem('imagedata')
-            localStorage.removeItem('points')
-        }
+        
+        localStorage.removeItem('imagedata')
+        localStorage.removeItem('points')
+        
         var formData = new FormData()
         formData.append('image',imageData)
 
@@ -39,10 +36,10 @@ async function form_doc_data(){
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);
                 done = true
-                window.location.href = 'index.html';
+                //window.location.href = 'index.html';
             }
         });
-    
+       
 }
 
 async function loading(){
