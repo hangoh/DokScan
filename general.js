@@ -324,3 +324,4 @@ async function form_doc_data_and_loading(imageData){
     }
 }
 
+loading()
