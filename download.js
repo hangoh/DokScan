@@ -10,16 +10,16 @@ function get_img_data(){
         byteData = localStorage.getItem('image_byte')
         if(byteData == null){
             console.log('redirecting...')
-            window.location.href = 'index.html';
+            //window.location.href = 'index.html';
         }else{
-             url = byteData
-            localStorage.removeItem('image_byte')
+            url = byteData
+            //localStorage.removeItem('image_byte')
             drawimage(byteData)
         }
     
    }catch{
         console.log('redirecting...')
-        window.location.href = 'index.html';
+        //window.location.href = 'index.html';
    }
 }
 
