@@ -35,7 +35,8 @@ async function form_doc_data(){
             success: function(response) {
             // Image data received from backend API
                 localStorage.setItem('image_byte',`data:image/jpeg;base64,${response}`)
-                
+                console.log('jbhbbbbbibuui')
+                console.log('jbhbbbb????????????bibuui')
                 done = true
                 return true
                 
