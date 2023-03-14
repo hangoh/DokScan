@@ -67,7 +67,7 @@ confirmBtn.addEventListener('click', function() {
     localStorage.setItem('imagedata',`${data}`)
     localStorage.setItem('points',`${points}`)
     close_pop_up_screen();
-    window.location.href = "loading.html"    
+    //window.location.href = "loading.html"    
     
 });
 
