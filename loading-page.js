@@ -37,21 +37,23 @@ async function form_doc_data(){
                 localStorage.setItem('image_byte',JSON.stringify(`data:image/jpeg;base64,${response}`))
                 setTimeout(()=>{
                     done = true
-                },1500)
-                window.location.href="download.html"
+                    window.location.href="download.html"
+                },1000)
+                
                 
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log("AJAX error: " + textStatus + " - " + errorThrown);         
                 setTimeout(()=>{
                     done = true
-                },1500)          
+                    window.location.href = 'index.html';
+                },1000)          
             }
         });
     }catch{
         done = true
         console.log('redirecting...')
-        window.location.href = 'index.html';
+        
         
     }
 }
