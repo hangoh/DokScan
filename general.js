@@ -8,6 +8,7 @@ const uploadBtn = document.getElementById('upload');
 const captureBtn = document.getElementById('capture');
 const captureLoading = document.getElementById('capture-loading')
 const fileLoading = document.getElementById('file-loading')
+const iosWarning = document.getElementById('ios-warning')
 var data = ""
 var isFileUpload = false
 var isCamUpload = false
