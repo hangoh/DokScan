@@ -8,6 +8,7 @@
             let imageFile = e.target.files[0]; //here we get the image file
             var reader = new FileReader();
             reader.readAsDataURL(imageFile);
+            fileLoading.style.display = "block"
             reader.onloadend = function (e) {
                 var myImage = new Image(); // Creates image object
                 myImage.src = e.target.result; // Assigns converted image to image object

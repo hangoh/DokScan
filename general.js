@@ -7,6 +7,7 @@ const startBtn = document.getElementById('start');
 const uploadBtn = document.getElementById('upload');
 const captureBtn = document.getElementById('capture');
 const captureLoading = document.getElementById('capture-loading')
+const fileLoading = document.getElementById('file-loading')
 var data = ""
 var isFileUpload = false
 var isCamUpload = false
@@ -131,8 +132,11 @@ function sendImageToScan(imageData) {
         contentType: false,
         success: function(response) {
         // Image data received from backend API
-        if (isCamUpload){
+        if (isCamUpload){    
             video.play()
+            captureLoading.style.display = 'none'
+        }else{
+            fileLoading.style.display = 'none'
         }
         if(response.result == "positive"){
             captureBtn.disabled = false
@@ -145,11 +149,11 @@ function sendImageToScan(imageData) {
                 p.y = imageDataFromBackend[i][0][1]
                 points.push(p)
             }
-            captureLoading.style.display = 'none'
+            
             show_pop_up_screen(previewImageOnly(imageData))
         }else{
             // Hide the alert message after 4 seconds
-            captureLoading.style.display = 'none'
+            
             show_pop_up_screen(previewImageWthDot(imageData))
             alertMsg.style.display = "block";
             setTimeout(function() {

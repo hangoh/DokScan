@@ -169,6 +169,11 @@
             display:flex;
             flex-direction: row;
         }
+
+        #file-upload-container{
+            display:flex;
+            flex-direction: row;
+        }
         
 
 		/* Responsive styles */
@@ -218,7 +223,11 @@
 	<div class="container" id="main-container">
 		<button id="start">Start Camera</button>
 
-        <button id="upload">Upload File</button>
+        <div id="file-upload-container">
+            <button id="upload">Upload File</button>
+            <div class="loader" id="file-loading"></div>
+        </div>
+        
         <input type="file" id="file-input" accept="image/*" style = 'display: none;'>
         <select id="cameras" name="cameras">
         </select> 
