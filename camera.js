@@ -54,6 +54,7 @@ function captureImage() {
     console.log(data);
         // You can do something with the data here, like send it to a server or display it on the page
     captureLoading.style.display = 'block'
+    video.pause()
     sendImageToScan(data)
 }
 

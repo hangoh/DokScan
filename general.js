@@ -131,6 +131,9 @@ function sendImageToScan(imageData) {
         contentType: false,
         success: function(response) {
         // Image data received from backend API
+        if (isCamUpload){
+            video.play()
+        }
         if(response.result == "positive"){
             captureBtn.disabled = false
             var imageDataFromBackend = response.points;

@@ -18,6 +18,8 @@
                     myCanvas.height = myImage.height; // Assigns image's height to canvas
                     myContext.drawImage(myImage,0,0); // Draws the image on canvas
                     data = myCanvas.toDataURL("image/jpeg"); // Assigns image base64 string in jpeg format to a variable
+                    isCamUpload = false
+                    isFileUpload = true
                     sendImageToScan(data)
                     }
                 }
