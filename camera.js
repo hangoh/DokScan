@@ -6,9 +6,9 @@ async function startCamera() {
     const cameras = devices.filter(device => device.kind === 'videoinput');
     const select = document.getElementById("cameras");
     select.innerHTML = "";
-    video.setAttribute("autoplay","")
-    video.setAttribute("muted","")
-    video.setAttribute("playsinline","")
+    video.setAttribute("autoplay"," ")
+    video.setAttribute("muted"," ")
+    video.setAttribute("playsinline"," ")
     cameras.forEach((device) => {
         
         const option = document.createElement("option");
@@ -43,6 +43,7 @@ async function startCamera() {
 
 // Capture an image from the video stream
 function captureImage() {
+    captureBtn.disabled = true
     const canvas = document.createElement('canvas');
     canvas.width = video.videoWidth;
     canvas.height = video.videoHeight;
@@ -52,6 +53,7 @@ function captureImage() {
     isFileUpload = false
     console.log(data);
         // You can do something with the data here, like send it to a server or display it on the page
+    captureLoading.style.display = 'block'
     sendImageToScan(data)
 }
 

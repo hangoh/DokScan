@@ -164,6 +164,11 @@
             padding:10px;
             color: firebrick;
         }
+
+        #button-container{
+            display:flex;
+            flex-direction: row;
+        }
         
 
 		/* Responsive styles */
@@ -188,6 +193,24 @@
                 margin-bottom: 20px;
             }
 		}
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            animation: spin 2s linear infinite;
+            
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #capture-loading{
+            display:none;
+        }
 	</style>
 </head>
 <body>
@@ -200,8 +223,12 @@
         <select id="cameras" name="cameras">
         </select> 
 		<video id="video"></video>
-      
-		<button id="capture" disabled>Capture Image</button>
+        
+		<div id="button-container">
+            <button id="capture" disabled>Capture Image</button>
+            <div class="loader" id="capture-loading"></div>
+        </div>
+        
     </div> 
         <!-- Add the modal dialog box -->
         <div id="modal">
