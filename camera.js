@@ -6,7 +6,6 @@ async function startCamera() {
     const cameras = devices.filter(device => device.kind === 'videoinput');
     const select = document.getElementById("cameras");
     select.innerHTML = "";
-    video.setAttribute("autoplay"," ")
     video.setAttribute("muted"," ")
     video.setAttribute("playsinline"," ")
     cameras.forEach((device) => {
