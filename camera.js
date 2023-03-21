@@ -15,10 +15,10 @@ async function startCamera() {
         option.text = device.label || `Camera ${select.length + 1}`;
         select.add(option);
     });
-    select.lastElementChild.selected = true
+    
     try {
         cameraID = document.getElementById('cameras').value
-        var stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: cameraID}});
+        var stream = await navigator.mediaDevices.getUserMedia({facingMode: "environment",});
         camOption.addEventListener('change',async function(){
             newcameraID = camOption.value
             stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: newcameraID}});
