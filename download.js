@@ -112,8 +112,8 @@ async function downloadImageAsPdf(imageSrc) {
     }
     console.log(centerX)
     console.log(centerY)
-    console.log(centerX - width / 2)
-    console.log(centerY - height / 2)
+    console.log(centerX - (width / 2))
+    console.log(centerY - (height / 2))
     // add the image to the PDF
     doc.addImage(img, 'JPEG', centerX - width / 2, centerY - height / 2, width, height);
     // Download the PDF at the frontend
