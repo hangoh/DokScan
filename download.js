@@ -84,8 +84,8 @@ function downloadImageAsPdf(imageSrc) {
     var height = img.height;
 
     // set the maximum width and height of the image
-    const maxWidth = doc.internal.pageSize.getWidth() - 20; // subtracting some margin
-    const maxHeight = doc.internal.pageSize.getHeight() - 20; // subtracting some margin
+    const maxWidth = doc.internal.pageSize.width - 20; // subtracting some margin
+    const maxHeight = doc.internal.pageSize.height - 20; // subtracting some margin
 
     // check if the width or height is larger than the maximum size
     if (width > maxWidth || height > maxHeight) {
@@ -105,8 +105,8 @@ function downloadImageAsPdf(imageSrc) {
     }
 
     // calculate the center of the page
-    var x = (doc.internal.pageSize.getWidth() - width) / 2;
-    var y = (doc.internal.pageSize.getHeight() - height) / 2;
+    var x = (doc.internal.pageSize.width - width) / 2;
+    var y = (doc.internal.pageSize.height - height) / 2;
 
     // add the image to the PDF
     doc.addImage(img, 'JPEG', x,y, width, height);
