@@ -36,7 +36,8 @@ function drawimage(url){
         
         canvas.width = image.width;
         canvas.height = image.height;
-        
+        img_download.disabled = false
+        pdf_download.disabled = false
         // Draw the image on the canvas
         ctx.drawImage(image, 0, 0);
 
@@ -76,7 +77,7 @@ function downloadImageAsPdf(imageSrc) {
     img.src = imageSrc
 
     // Create a new PDF document
-    const doc = new jsPDF("p","pt",'a4');
+    const doc = new jsPDF("p","px",'a4');
 
     // Add the image to the PDF and scale it to fit on the page
     
