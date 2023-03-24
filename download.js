@@ -76,11 +76,7 @@ function downloadImageAsPdf(imageSrc) {
     img.src = imageSrc
 
     // Create a new PDF document
-    const doc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4'
-    });
+    const doc = new jsPDF("p","pt",'a4');
 
     // Add the image to the PDF and scale it to fit on the page
     var width = img.width;
