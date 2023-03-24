@@ -70,7 +70,7 @@ img_download.addEventListener('click',function(e){
 
 
 // Convert the image to a PDF and download it
-async function downloadImageAsPdf(imageSrc) {
+function downloadImageAsPdf(imageSrc) {
     // Load the image
     const img = new Image
     img.src = imageSrc
