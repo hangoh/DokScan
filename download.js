@@ -79,12 +79,9 @@ function downloadImageAsPdf(imageSrc) {
     const doc = new jsPDF("p","pt",'a4');
 
     // Add the image to the PDF and scale it to fit on the page
+    
     var width = img.width;
     var height = img.height;
-
-    // calculate the center of the page
-    const centerX = doc.internal.pageSize.getWidth()*0.5;
-    const centerY = doc.internal.pageSize.getHeight()*0.5;
 
     // set the maximum width and height of the image
     const maxWidth = doc.internal.pageSize.getWidth() - 20; // subtracting some margin
@@ -106,8 +103,13 @@ function downloadImageAsPdf(imageSrc) {
             width = height * aspectRatio;
         }
     }
+
+    // calculate the center of the page
+    var x = (doc.internal.pageSize.getWidth() - width) / 2;
+    var y = (doc.internal.pageSize.getHeight() - height) / 2;
+
     // add the image to the PDF
-    doc.addImage(img, 'JPEG', (centerX - (width*0.5)), (centerY - (height*0.5)), width, height);
+    doc.addImage(img, 'JPEG', x,y, width, height);
     // Download the PDF at the frontend
     doc.save(`DokScan-${get_date()}.pdf`);
 }
