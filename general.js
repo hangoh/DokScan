@@ -133,24 +133,24 @@ function sendImageToScan(imageData) {
         contentType: false,
         success: function(response) {
         // Image data received from backend API
-        captureBtn.disabled = false
-        if (isCamUpload){    
-            video.play()
-            captureLoading.style.display = 'none'
-        }else{
-            fileLoading.style.display = 'none'
-        }
-        if(response.result == "positive"){
-            
-            var imageDataFromBackend = response.points;
-            console.log(imageDataFromBackend)
-        
-            for(let i=0 ;i<imageDataFromBackend.length;i++){
-                p ={x:0,y:0}
-                p.x = imageDataFromBackend[i][0][0]
-                p.y = imageDataFromBackend[i][0][1]
-                points.push(p)
+            captureBtn.disabled = false
+            if (isCamUpload){    
+                video.play()
+                captureLoading.style.display = 'none'
+            }else{
+                fileLoading.style.display = 'none'
             }
+            if(response.result == "positive"){
+                
+                var imageDataFromBackend = response.points;
+                console.log(imageDataFromBackend)
+            
+                for(let i=0 ;i<imageDataFromBackend.length;i++){
+                    p ={x:0,y:0}
+                    p.x = imageDataFromBackend[i][0][0]
+                    p.y = imageDataFromBackend[i][0][1]
+                    points.push(p)
+                }
             
             show_pop_up_screen(previewImageOnly(imageData))
         }else{
