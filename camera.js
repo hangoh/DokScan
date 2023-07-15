@@ -14,7 +14,7 @@ async function startCamera() {
         const option = document.createElement("option");
         option.value = device.deviceId;
         option.text = device.label || `Camera ${select.length + 1}`;
-        if (i==1){
+        if (i==0){
             option.selected = "selected"
         i+=1
         select.add(option);
