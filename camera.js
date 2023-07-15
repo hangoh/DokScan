@@ -35,7 +35,7 @@ async function startCamera() {
         camOption.style.display = 'block';
         captureBtn.disabled = false
     } catch (error) {
-        console.error(error)
+        console.log(error)
     }
 
     
