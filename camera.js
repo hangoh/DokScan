@@ -5,25 +5,23 @@ async function startCamera() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const cameras = devices.filter(device => device.kind === 'videoinput');
     const select = document.getElementById("cameras");
-    var i = 0
     select.innerHTML = "";
     video.setAttribute("muted"," ")
     video.setAttribute("playsinline"," ")
     cameras.forEach((device) => {
         console.log(device)
         const option = document.createElement("option");
+        option.id = "camera_option"+device.deviceId.toString()
         option.value = device.deviceId;
         option.text = device.label || `Camera ${select.length + 1}`;
-        if (i==0){
-            option.selected = "selected"
-        }
-        i+=1
         select.add(option);
     });
     
     try {
         cameraID = document.getElementById('cameras').value
         var stream = await navigator.mediaDevices.getUserMedia({video:{facingMode: "environment"}});
+        var current_stream_device_id = stream.getVideoTracks()[0].getSettings().deviceId
+        document.getElementById("camera_option"+current_stream_device_id.toString()).selected = "selected"
         camOption.addEventListener('change',async function(){
             newcameraID = camOption.value
             stream = await navigator.mediaDevices.getUserMedia({video: {deviceId: newcameraID}});
@@ -41,8 +39,6 @@ async function startCamera() {
     } catch (error) {
         console.log(error)
     }
-
-    
 }
 
 // Capture an image from the video stream
