@@ -9,7 +9,7 @@ async function startCamera() {
     video.setAttribute("muted"," ")
     video.setAttribute("playsinline"," ")
     cameras.forEach((device) => {
-        
+        console.log(device)
         const option = document.createElement("option");
         option.value = device.deviceId;
         option.text = device.label || `Camera ${select.length + 1}`;
