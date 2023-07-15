@@ -5,6 +5,7 @@ async function startCamera() {
     const devices = await navigator.mediaDevices.enumerateDevices();
     const cameras = devices.filter(device => device.kind === 'videoinput');
     const select = document.getElementById("cameras");
+    var i = 0
     select.innerHTML = "";
     video.setAttribute("muted"," ")
     video.setAttribute("playsinline"," ")
@@ -13,6 +14,9 @@ async function startCamera() {
         const option = document.createElement("option");
         option.value = device.deviceId;
         option.text = device.label || `Camera ${select.length + 1}`;
+        if (i==1){
+            option.selected = "selected"
+        i+=1
         select.add(option);
     });
     
