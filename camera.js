@@ -30,7 +30,6 @@ async function startCamera() {
         video.play();
         startBtn.style.display = 'none';
         uploadBtn.style.display = 'none';
-        iosWarning.style.display = 'none';
         captureBtn.style.display = 'block';
         camOption.style.display = 'block';
         captureBtn.disabled = false
