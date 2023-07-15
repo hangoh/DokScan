@@ -16,6 +16,7 @@ async function startCamera() {
         option.text = device.label || `Camera ${select.length + 1}`;
         if (i==0){
             option.selected = "selected"
+        }
         i+=1
         select.add(option);
     });
