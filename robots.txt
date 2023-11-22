@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: 
+Sitemap: https://dokscan.pages.dev/sitemap.xml
